@@ -4,11 +4,11 @@ function App() {
   const [apiData, setApiData] = useState({});
   const [getState, setGetState] = useState("28277");
   const [state, setState] = useState("28277");
-
+  
   const apiKey = "e69f1c9ec550f27d563d6d98e63b84ec";
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${state}&units=imperial&appid=${apiKey}`;
+  const curDT = new Date(apiData.dt * 1000).toLocaleString();
 
-    
   useEffect(() => {
     fetch(apiUrl)
       .then((res) => res.json())
@@ -53,9 +53,8 @@ function App() {
               />
               <p className="temp">{Math.trunc(apiData.main.temp)}&deg;F</p>
             </div>
-            <h2>
-              <strong>{apiData.name}</strong>
-            </h2>
+            <h2><b>{apiData.name}</b></h2>
+            
             <div className="page">
               <div className="colOne">
                 <p><b>Low:</b> {Math.trunc(apiData.main.temp_min)}&deg;F</p>
@@ -67,11 +66,13 @@ function App() {
                 <p><b>Humidity:</b> {apiData.main.humidity}%</p>
                 <p><b>Wind Speed:</b> {apiData.wind.speed} mph</p>
               </div>
+
             </div>
           </div>
         </div>
         ) : (<p>Loading</p>)}
       </div>
+      <p className="time">{curDT}</p>
     </div>
   );
 }

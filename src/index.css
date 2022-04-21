@@ -109,4 +109,8 @@ h2 {
   width: 300px;
 }
 
-
+.time {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
